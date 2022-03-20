@@ -1,20 +1,21 @@
 import React from 'react';
 import "./CurrencyRow.css";
 
-const CurrencyRow = () => {
+const CurrencyRow = (props) => {
+
+  // destructure / spread it into object 
+  const {currencyOptions} = props
+
   return (
     <div className='CurrencyRow'>
-        <input className='input-box'/>
+
+        {/* type="nubmer" ensures that user is only able to type in numbers */}
+        <input type="number" className='input-box'/>
         <select className='drop-down'>
-            <option value="myr">MYR - Malaysia</option>
-            <option value="usd">USD - United States</option>
-            <option value="cny">CNY - China</option>
-            <option value="eur">EUR  - European Union</option>
-            {/* <option value="jpy"></option>
-            <option value="cad"></option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option> */}
+          {currencyOptions.map(option =>(
+            <option key={option} value={option}>{option}</option>
+          ))}
+          
         </select>
     </div>
         
